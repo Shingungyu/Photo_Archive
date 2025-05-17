@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.side-menu {
+  position: fixed; /*위치 고정시킴*/
+  top: 0;
+  right: 0;
+  width: 200px;
+  height: 100vh;
+  background-color: #222;
+  color: white;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.menu-item {
+  margin-bottom: 10px;
+}
+
+.menu-title {
+  background-color: #333;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.menu-title:hover {
+  background-color: #444;
+}
+
+.submenu {
+  background-color: #444;
+  overflow: hidden;
+  max-height: 0; /*기본적으로 안보임*/
+  transition: max-height 0.3s ease;
+  border-radius: 4px;
+}
+
+
+.menu-item:hover .submenu {
+  max-height: 500px; 
+}
+
+.submenu div {
+  padding: 8px 10px;
+  border-top: 1px solid #555;
+}
+
