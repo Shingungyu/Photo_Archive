@@ -1,18 +1,218 @@
-body {
-  margin: 0;
-  font-family: sans-serif;
+@charset 'utf-8';
+
+html{
+  font-family: "Noto sans KR",serif;
+   font-size: 14px;
+   font-optical-sizing: auto;
+   font-weight: 400;
+   font-style: normal;
 }
 
+body {
+  margin: 0;
+  overflow-x:hidden;
+  color: rgb(29,29,31);
+  background: white;
+  margin:0;
+}
+p{
+  line-height: 1.6;
+}
+a{
+  color: rgb(29,29,31);
+}
+
+:root{
+  --grad-start: #0047AB;   /* 진한 파랑 */
+  --grad-mid1: #0073E6;    /* 중간 파랑 */
+  --grad-mid2: #00AEEF;    /* 밝은 스카이 블루 */
+  --grad-end: #62BFAD;     /* 연한 민트빛 청록색 */
+  
+}
+
+.assignment_menu a:link,
+.assignment_menu a:visited{
+  color: black;
+  text-decoration: none;
+  text-align: center;
+}
+.scroll-section{
+    /* border: 3px solid red; */
+    padding-top: 50vh; /*viewport height(scroll-seciton간 공간 주기)*/
+}
+#scroll-section-0{
+  background: linear-gradient(
+    to right top,
+    #00C5CD, /* 짙은 청록(터쿼이즈) */
+    #20B2AA, /* 연한 청록빛(라이트씨그린) */
+    #7FFFD4, /* 밝은 아쿠아마린 */
+    #E0F7FA  /* 아주 연한 물빛(아이스블루) */
+  );
+  /*최소 높이를 화면 높이만큼 잡아두면 스크롤 구간 0 전체가 배경으로 덮임.*/
+  mid-height: 100vh; /*viewport height(화면 전체 높이) */
+  display: flex; /*flexbox로 자식 요소를 중앙 정렬*/
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+/*아래는 header부분의 photoarchive 제목 표기*/
+#scroll-section-0 h1{
+  font-size: 8rem;
+  /*14 * 4px*/
+  text-align: center;
+  color: white;
+}
+#scroll-section-1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;   /* 커졌다가 넘어가는 텍스트는 넘치면 보이지 않도록 */
+}
+#scroll-section-1 .text-container {
+  width: 100%;
+  height: 100%;       /* 섹션 전체 높이를 채우도록 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* margin: 0 auto;*/
+  /*padding: 0 20px;*/ 
+}
+#scroll-section-1 .scroll-text {
+  font-size: 1.2em; /* 초기 크기를 1rem → 1.2rem로 늘립니다. */
+  line-height: 1.4;
+  text-align: center;
+  /* transform-origin을 중앙에 잡아야 확대할 때 중앙 기준 확대됩니다 */
+  transform-origin: center center;
+  transform: scale(0.8);
+  transition: none;   /* 스크롤 애니메이션 자체가 transform을 직접 조정하므로 트랜지션은 꺼둠 */
+  max-width: 65%;     /* 텍스트가 너무 넓게 늘어나지 않도록 최대 너비 제한 */
+  color: #000;        /* 글자 색은 검정(필요에 따라 변경) */
+}
+#scroll-section-1 .scroll-text strong {
+  font-size: 1.2rem;  /* 기본 대비 약간 큼 */
+  font-weight: bold;
+}
+#scroll-section-2 {
+  padding-top: 10vh;
+}
+#headertext {
+  font-size: 30px;
+  background: linear-gradient(to right top, #62BFAD, #f9f7e8);
+  color: transparent;
+  background-clip: text;
+}
+
+
+.main-message{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top:35vh; /*viewport height(화면 중앙에 위치)*/
+  margin: 5px 0;
+  /*회색박스 background 세로방향으로 구분위해 공간 준 것*/
+  height: 3em;
+  font-size: 2.5rem;
+  opacity: 0;
+}
+.main-message p{
+  font-weight: bold;
+  text-align: center;
+  line-height: 1.2;
+}
+.sticky-elem{
+  position: fixed;
+  left: 0;
+  width: 100%;
+}
+/*body에 해당되는 씬(body의 아이디)에 해당되는 번호가 호출되면 그때 sticky-elem을 보여주기로 했음.*/
+body #show-scene-0 #scroll-section-0.sticky-elem,
+body #show-scene-1 #scroll-section-1.sticky-elem,
+body #show-scene-2 #scroll-section-2.sticky-elem,
+body #show-scene-3 #scroll-section-3.sticky-elem{
+    display: block;
+    will-change: transform, opacity;
+}
+.scroll-effect-end .sticky-elem {
+	/* 스크롤 효과가 모두 끝나고, 아래 일반 콘텐츠 영역에서는 sticky-elem들을 모두 안보이도록 */
+	display: none !important;
+}
+/*슬라이드 이미지부분의 내용 표기*/
+.slide-container{
+  width: 800px;
+  margin: 0 auto;
+  overflow: hidden;
+  position: relative; /*슬라이드 이미지 부분의 위치를 상대적으로 지정*/
+}
+.slide{
+  display: flex;
+  width: 300vw; /*슬라이드 이미지 부분의 너비를 300vw로 지정(3장 * 100vw)*/
+  transition: transform 0.5s ease-in-out;
+}
+.slide li {
+  width: 800px;
+  list-style: none;
+}
+.slide li img{
+  border-radius: 10px;
+  width: 100%;
+  height: 100vh; /*이미지의 높이를 viewport height로 지정*/
+}
+/*슬라이드 이미지 부분의 버튼 표기*/
+.left-btn, .right-btn{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(255, 255, 255, 0.6);
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+.left-btn {
+  left: 10px;
+}
+
+.right-btn {
+  right: 10px;
+}
+
+/*아래는 aside로 표기한 우측의메뉴에 해당*/
+aside{
+  overflow: visible;
+  position: relative;
+  z-index: 10;
+}
 .side-menu {
-  position: fixed; /*위치 고정시킴*/
+  position: fixed; 
   top: 0;
-  right: 0;
+  right: 0;/*화면 우측에 붙임*/
   width: 200px;
   height: 100vh;
-  background-color: #222;
+  background: #E0F7FA;
   color: white;
   padding: 10px;
   overflow-y: auto;
+  z-index: 1000;
+  overflow: visible;
+}
+.side-menu.closed{
+  transform: translateX(100%); /*사이드 메뉴가 닫힐 때 오른쪽으로 이동*/
+}
+#toggle-menu{
+  position: absolute;
+  left: -40px; /*사이드 메뉴의 왼쪽에 위치*/
+  top: 1rem;
+  width: 40px;
+  height: 40px;
+  color: #005F73;  /* 짙은 청록색 계열 예시 */
+  background: none;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1001;
 }
 
 .menu-item {
@@ -20,14 +220,35 @@ body {
 }
 
 .menu-title {
-  background-color: #333;
-  padding: 10px;
+  display: block;
+  background-color: #E0F7FA ;
+  padding: 10px 15px;
   cursor: pointer;
   border-radius: 4px;
+  text-decoration: none;
+  color: black;
+}
+.menu-title a {
+  text-decoration: none;
+  color: black;           /* 원하는 색으로 지정 */
+  display: block;        /* 메뉴 아이템 전체 영역을 클릭할 수 있도록 블록 레벨로 만드는 것이 좋음 */
+  padding: 10px 15px;    /* 클릭 영역 확보 */
+  text-align: center;
 }
 
-.menu-title:hover {
-  background-color: #444;
+ .menu-title:hover {
+   background: linear-gradient(
+    to right top,
+    #00C5CD, /* 짙은 청록(터쿼이즈) */
+    #20B2AA, /* 연한 청록빛(라이트씨그린) */
+    #7FFFD4, /* 밝은 아쿠아마린 */
+    #E0F7FA  /* 아주 연한 물빛(아이스블루) */
+  );
+} 
+.menu-title a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;        
+  text-decoration: none; /* 혹시 브라우저 기본 호버 밑줄이 뜨더라도 제거 */
 }
 
 .submenu {
@@ -48,3 +269,146 @@ body {
   border-top: 1px solid #555;
 }
 
+/* 갤러리 컨테이너 : 4*2 그리드*/
+.gallery-section {
+  padding: 2rem;
+  background: #f9f9f9;
+}
+.gallery-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /*4열 그리드*/
+  grid-auto-rows: 250px;
+  gap: 10px;
+  margin: 0 auto;
+  max-width:  1200px;
+  width: 100%;
+}
+@media (max-width :768px) {
+   .gallery-container {
+      grid-template-columns: repeat(2, 1fr); 
+    }
+}
+@media (max-width : 5s00px){
+    .gallery-container {
+      grid-template-columns: 1fr; 
+    }
+  }
+.gallery-item {
+  display: flex;
+  flex-direction: column;  /* img-wrapper & caption을 세로로 쌓기 */
+  width: 100%;
+  height: 100%;           /* grid-auto-rows:250px와 맞춰져 셀 크기 고정 */
+  border: 1px solid white;  /* 얇은 빨간 테두리 */
+  border-radius: 4px;     /* 모서리 살짝 둥글게 */
+  background-color: #fff; /* 이미지 로딩 전/빈 슬롯일 때 흰 배경 */
+  overflow: hidden;
+}
+.img-wrapper{
+  flex: 0 0 200px;
+  overflow: hidden;
+  width: 100%;
+}
+.img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /*이미지 비율 유지하면서 크기 조정*/
+  display: block;
+}
+.caption {
+  flex: 1;                  /* 남은 공간을 모두 차지 */
+  text-align: center;
+  font-size: 1rem;
+  color: #333;
+  padding-top: 0.25rem;
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items : center;
+    margin-top: 1rem;
+  }
+.pagination button {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin: 0 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+.pagination button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+.pagination button:not(:disabled):hover {
+  background-color: #555;
+}
+.pagination #page-info {
+  font-size: 1rem;
+  color: #333;
+}
+#lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* 흰색 반투명 배경 (알파값 0.8) */
+   background: rgba(255, 255, 255, 0.8); 
+ 
+  display: none;              /* 기본적으로 숨김 */
+  align-items: center;        /* 세로 중앙 정렬 (flex) */
+  justify-content: center;    /* 가로 중앙 정렬 (flex) */
+  z-index: 9999;              /* 다른 요소들 위에 뜨도록 큰 값 설정 */
+}
+
+#lightbox-overlay img {
+  transform: scale(2);
+  transform-origin: center center; /* 중앙 기준으로 확대 */
+
+  border-radius: 4px;         /* 모서리를 약간 둥글게 (선택) */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5); /* 그림자 강조 (선택) */
+  object-fit: contain;        /* 이미지 비율 유지하며 보여주기 */
+}
+ #lightbox-back {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      padding: 6px 12px;
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #005F73;
+      border: none;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      z-index: 10000; /* img보다 위에 오도록 */
+    }
+    #lightbox-back:hover {
+      background-color: rgba(255, 255, 255, 1);
+    }
+  
+.footer{
+  background: linear-gradient(
+    to right top,
+    #00C5CD, /* 짙은 청록(터쿼이즈) */
+    #20B2AA, /* 연한 청록빛(라이트씨그린) */
+    #7FFFD4, /* 밝은 아쿠아마린 */
+    #E0F7FA  /* 아주 연한 물빛(아이스블루) */
+  )
+ 
+}
+.footer p {
+  padding: 1rem;
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+} 

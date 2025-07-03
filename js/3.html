@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, tr, th{
+            border: 2px solid #760c0c;
+            border-collapse : collapse;
+        }
+        tr, th {
+            padding: 10px 20px;
+        }
+        thead th {
+            font-weight: bold;
+        }
+        
+        tbody th {
+            font-weight: normal;
+        }
+        
+        caption{
+            caption-side: bottom;
+        }
+        #welcomemessage{
+            text-shadow: 7px -7px 20px #000000;
+        }
+        .gradcircle{
+            width: 50px;
+            height: 50px;
+            border-radius: 5rem;
+            background: linear-gradient(to right top, #62BFAD, #f9f7e8 );
+            align-items: center;
+        }
+        #welcomemessage2{
+            font-size: 30px;
+            background: linear-gradient(to right top, #62BFAD, #f9f7e8);
+            color: transparent;
+            -webkit-background-clip: text;
+        }
+   
+        
+    </style>
+</head>
+<body>
+    <div id="visitgoogle">
+        <ol>
+            <li>
+                <a href="https://google.com " target="_blank">google.com 방문</a>
+                <br>target 속성이 "_blnak"이므로, 링크는 새로운 탭에서 열립니다.
+            </li>
+            <li>
+                <a href="https://google.com " target="_self">google.com 방문</a>
+                <br>target 속성이 "_self"이므로, 링크는 해당 창에서 열립니다.
+            </li>
+        </ol>
+    </div>
+
+    <hr>
+    
+    <div id="timetable">
+        <table>
+            <thead>
+                <tr id="montofri">
+                    <th>mon</th>
+                    <th>tue</th>
+                    <th>wed</th>
+                    <th>thu</th>
+                    <th>fri</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>c programming</th>
+                    <th>web programming</th>
+                    <th>mobile programming</th>
+                    <th>java programming</th>
+                    <th  rowspan="3">휴강</th>
+                </tr>
+                <tr>
+                    <th colspan="4">점심시간</th>
+                    
+                </tr>
+                <tr>
+                    <th>c programming</th>
+                    <th>web programming</th>
+                    <th>mobile programming</th>
+                    <th>java programming</th>
+                </tr>
+            </tbody>
+            <caption>시간표</caption>
+        </table>
+    </div>
+    
+    
+    <hr>
+    <div id="welcomemessage">
+        <h2>회원 가입을 환영합니다</h2>
+    </div>
+    
+    <div id="welcomemessage2">
+        <h2>Welcome</h2>
+        <div class="gradcircle"></div>
+    </div>
+    
+    <div id="formelement1">
+        <form>
+            <fieldset>
+                <legend>사용자 정보</legend>
+                <ul>
+                    <li>
+                        <label>
+                            아이디: <input type="text" id="user_id" size="30" placeholder="4자~10자사이, 공백없이 ">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            이메일: <input type="text" id="user_email" size="30">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            비밀번호: <input type="text" id="user_id" size="30" placeholder="문자와 숫자, 특수기호 포함 ">
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            비밀번호 확인: <input type="text" id="user_id" size="30" >
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            가입 경로: 
+                                <select id="register_root">
+                                    <option value="blog">블로그</option>
+                                    <option value="insta">인스타그램</option>
+                                    <option value="relationship">지인</option>
+    
+                                </select>
+                        </label>
+                    </li>
+                    <li>
+                        <label>메모</label>
+                        <textarea id="memo" cols="40" rows="4" placeholder="남길 말씀이 있다면 여기에"></textarea>
+                    </li>
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+    
+    <div id="formelement2">
+        <form>
+            <fieldset>
+                <legend>이벤트와 새로운 소식</legend>
+                <div>
+                    <input type="radio" id="mailrecieve">
+                    <label>메일수신</label>
+                </div>
+                <div>
+                    <input type="radio" id="mailnotrecieve" checked>
+                    <label>메일수신 안함</label>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    
+    <div id="buttonelement">
+        <form>
+            <input type="button" value="가입하기">
+            <input type="button" value="취소">
+        </form>
+    </div>
+    
+</body>
+</html>
